@@ -99,7 +99,7 @@ object IOIntro extends App {
   def asUnit4[A](ioa: IO[A]): IO[Unit] = ioa.void // same
 
   def sum(n: Int): Int =
-    if (n <= 0) = 0
+    if (n <= 0) 0
     else n + sum(n - 1)
 
   // for comprehension again
@@ -119,7 +119,7 @@ object IOIntro extends App {
     } yield last + prev
   
   def fib2(n: Int): IO[BigInt] = 
-    if(n<=2) IO.pure(1)
+    if(n<=2) IO(1)
     else for {
       last <- IO.defer(fib(n -1)) // same as IO.dalay(...).flatten
       prev <- IO.defer(fib(n -2)) // same as IO.dalay(...).flatten
